@@ -9,6 +9,7 @@ request(url, function(err, res, data) {
     if (err) throw err;
     $ = cheerio.load(data);
 
+    var compRank = $('.competitive-rank').find('div').first().text();
     var compHeroStats = $('#competitive [data-category-id="overwatch.guid.0x08600000000003D1"]').find('.progress-category-item');
     var qpHeroStats = $('#quickplay [data-category-id="overwatch.guid.0x0860000000000021"]').find('.progress-category-item');
 
@@ -33,6 +34,4 @@ request(url, function(err, res, data) {
         stats[hero] = tp;
         qpTopHeroes.push(stats);
     });
-
-    console.log(qpTopHeroes);
 });
